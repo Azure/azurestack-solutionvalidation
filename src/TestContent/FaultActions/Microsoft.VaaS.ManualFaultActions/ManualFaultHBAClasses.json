@@ -1,0 +1,72 @@
+﻿[
+  {
+    "classname": "SingleNodeHBACableDisconnect",
+    "resourcetype": "HBA",
+    "faultinstructions": [
+      "1. Verify the storage is healthy.", 
+      "2. Plug out the SAS cable from the storage controller on one node.",
+      "3. Confirm the storage indicates that the disks from the node without SAS cable have ‘Lost communication’",
+      "4. Wait for 5 mins.",
+      "5. Verify all the VMs are running, and the admin portal is up and running ",
+      "6. Verify the admin portal reports an alert about the HBA",
+      "7. Reconnect the cables back.",
+      "8. Verify the disks appear on the nodes.",
+      "9. Rebuild the storage.",
+      "10. Verify storage/VDisk/Storagepool are all healthy."    
+    ]
+  },
+  {
+    "classname": "MF2NodeHBACableDisconnect",
+    "resourcetype": "HBA",
+    "faultinstructions": [
+      "1. Verify the storage is healthy.", 
+      "2. Plug out the SAS cable from the storage controller on 2 nodes.",
+      "3. Confirm the storage indicates that the disks from the node without SAS cable have ‘Lost communication’",
+      "4. Wait for 5 mins.",
+      "5. Verify all the VMs are running, and the admin portal is up and running ",
+      "6. Verify the admin portal reports an alert about the HBA",
+      "7. Reconnect the cables back.",
+      "8. Verify the disks appear on the nodes.",
+      "9. Rebuild the storage.",
+      "10. Verify storage/VDisk/Storagepool are all healthy."    
+    ]
+  },
+  {
+    "classname": "SingleNodeHBAPCIeBusFault",
+    "resourcetype": "HBA",
+    "faultinstructions": [
+      "1. Verify the storage is healthy.",
+      "2. Induce a PCIe bus fault using coretestshim",
+      "3. <<Commandline - coretestshim>>",
+      "4. Confirm the storage indicates that the disks from the node have ‘Lost communication’",
+      "5. Wait for 5 mins.",
+      "6. Verify all the VMs are running, and the admin portal is up and running ",
+      "7. Verify the admin portal reports an alert about the HBA",
+      "8. Disable the fault by using - <<Commandline - coretestshim>>",
+      "9. Wait for 2 mins",
+      "10. Verify the disks appear on the node.",
+      "11. Rebuild the storage - get-virtualDisk | Repair-VirtualDisk",
+      "12. Verify storage jobs are running - get-storageJob.",
+      "13. Verify the admin portal is up and reports the disk being healthy."
+    ]
+  },
+  {
+    "classname": "MF2NodeHBAPCIeBusFault",
+    "resourcetype": "HBA",
+    "faultinstructions": [
+      "1. Verify the storage is healthy.",
+      "2. Induce a PCIe bus fault using coretestshim on 2 nodes",
+      "3. <<Commandline - coretestshim>>",
+      "4. Confirm the storage indicates that the disks from both node have ‘Lost communication’",
+      "5. Wait for 5 mins.",
+      "6. Verify all the VMs are running, and the admin portal is up and running ",
+      "7. Verify the admin portal reports an alert about the HBA",
+      "8. Disable the fault by using - <<Commandline - coretestshim>>",
+      "9. Wait for 2 mins",
+      "10. Verify the disks appear on the node.",
+      "11. Rebuild the storage - get-virtualDisk | Repair-VirtualDisk",
+      "12. Verify storage jobs are running - get-storageJob.",
+      "13. Verify the admin portal is up and reports the disk being healthy."
+    ]
+  }
+]

@@ -1,0 +1,288 @@
+﻿[
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeOneNicPortQuick",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select a physical net adapter and unplug its network cable",
+      "#3. Wait for 10 seconds and replug the network cable",
+      "#4. Enter $selectedNodeName and network adapter name into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeOneNicPortLong",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select a physical net adapter and unplug its network cable",
+      "#3. Wait for 180 seconds and replug the network cable",
+      "#4. Enter $selectedNodeName and network adapter name into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeTwoNicsPortQuick",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select two physical net adapters and unplug their network cables",
+      "#3. Wait for 10 seconds and replug the network cables",
+      "#4. Enter $selectedNodeName and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeTwoNicsPortLong",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select two physical net adapters and unplug their network cables",
+      "#3. Wait for 180 seconds and replug the network cables",
+      "#4. Enter $selectedNodeName and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeTwoNicsPortQuickOneByOne",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select two physical net adapters",
+      "    Pull cable #1, reconnect within 10 seconds",
+      "    Pull cable #2, reconnect within 10 seconds",
+      "#3. Enter $selectedNodeName and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeTwoNicsPortLongOneByOne",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select two physical net adapters",
+      "    Pull cable #1, reconnect after 180 seconds",
+      "    Pull cable #2, reconnect after 180 seconds",
+      "#3. Enter $selectedNodeName and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugSingleNodeTwoNicsPortLongSwitchCable",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a cluster node",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName",
+      "    $netAdapters",
+      "#2. Select two physical net adapters and unplug their network cables",
+      "#3. Wait for 180 seconds and switch and reconnect the network cables",
+      "#4. Enter $selectedNodeName and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugTwoNodesOneNicPortEachLong",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select two cluster nodes and their network adapters",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $randomNumber1 = Get-Random -Maximum $clusterNodes.Count",
+      "    $randomNumber2 = Get-Random -Maximum $clusterNodes.Count",
+      "    if ($randomNumber2 -eq $randomNumber1) { $randomNumber2 = (($randomNumber2 + 1) % $clusternodes.Count) };",
+      "    $selectedNodeName1 = ($clusternodes[$randomNumber1]).Name",
+      "    $selectedNodeName2 = ($clusternodes[$randomNumber2]).Name",
+      "    $selectedNodeName1; $selectedNodeName2",
+      "    $node1NetAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName1",
+      "    $node2NetAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName2",
+      "    $node1NetAdapters",
+      "    $node2NetAdapters",
+      "#2. Select one physical net adapter from each node",
+      "#   Pull cable from node1",
+      "#   Pull cable from node2",
+      "#   Reconnect both cable after 180 seconds",
+      "#3. Enter node names and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterUnplugTwoNodesTwoNicPortsEachLong",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select two cluster nodes and their network adapters",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $randomNumber1 = Get-Random -Maximum $clusterNodes.Count",
+      "    $randomNumber2 = Get-Random -Maximum $clusterNodes.Count",
+      "    if ($randomNumber2 -eq $randomNumber1) { $randomNumber2 = (($randomNumber2 + 1) % $clusternodes.Count) };",
+      "    $selectedNodeName1 = ($clusternodes[$randomNumber1]).Name",
+      "    $selectedNodeName2 = ($clusternodes[$randomNumber2]).Name",
+      "    $selectedNodeName1; $selectedNodeName2",
+      "    $node1NetAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName1",
+      "    $node2NetAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName2",
+      "    $node1NetAdapters",
+      "    $node2NetAdapters",
+      "#2. Select two physical net adapters from each node",
+      "    Pull cables from node1",
+      "    Pull cables from node2",
+      "    Switch cables between nodes and reconnect them after 180 seconds",
+      "#3. Enter node names and network adapter names into Resource Name field",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterDisableOneNodeOneNicPortsQuick",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a network adapter from a cluster node",
+      "    $stop = $false",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName | ? {$_.Status -eq 'Up'}",
+      "    if ($netAdapters.Count -lt 2) { $stop = $true; throw \"Connected network adapters is less than two\" }",
+      "    $netAdapter = $netAdapters[$(Get-Random -Maximum $netAdapters.Count)]",
+      "    if ($netAdapter.Status -ne 'Up') { throw \"network adapter is not Up\" }",
+      "#2. Disable and enable the selected network adapter",
+      "    if ($stop -eq $false) {",
+      "      Disable-NetAdapter -Name $netAdapter.Name -CimSession $selectedNodeName -Confirm:$false",
+      "      Start-Sleep -Seconds 10",
+      "      Enable-NetAdapter -Name $netAdapter.Name -CimSession $selectedNodeName",
+      "    }",
+      "#3. Enter $selectedNodeName and $netAdapter.Name into Resource Name field",
+      "    $selectedNodeName; $netAdapter.Name",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterDisableOneNodeOneNicPortsLong",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a network adapter from a cluster node",
+      "    $stop = $false",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName | ? {$_.Status -eq 'Up'}",
+      "    if ($netAdapters.Count -lt 2) { $stop = $true; throw \"Connected network adapters is less than two\" }",
+      "    $netAdapter = $netAdapters[$(Get-Random -Maximum $netAdapters.Count)]",
+      "    if ($netAdapter.Status -ne 'Up') { throw \"network adapter is not Up\" }",
+      "#2. Disable and enable the selected network adapter",
+      "    if ($stop -eq $false) {",
+      "      Disable-NetAdapter -Name $netAdapter.Name -CimSession $selectedNodeName -Confirm:$false",
+      "      Start-Sleep -Seconds 180",
+      "      Enable-NetAdapter -Name $netAdapter.Name -CimSession $selectedNodeName",
+      "    }",
+      "#3. Enter $selectedNodeName and $netAdapter.Name into Resource Name field",
+      "    $selectedNodeName; $netAdapter.Name",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterDisableOneNodeTwoNicPortsQuick",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a network adapter from a cluster node",
+      "    $stop = $false",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName | ? {$_.Status -eq 'Up'}",
+      "    if ($netAdapters.Count -lt 2) { $stop = $true; throw \"Connected network adapters is less than two\" }",
+      "    $randomNumber1 = Get-Random -Maximum $netAdapters.Count",
+      "    $randomNumber2 = Get-Random -Maximum $netAdapters.Count",
+      "    if ($randomNumber2 -eq $randomNumber1) { $randomNumber2 = (($randomNumber2 + 1) % $netAdapters.Count) };",
+      "    $netAdapter1 = $netAdapters[$randomNumber1]",
+      "    $netAdapter2 = $netAdapters[$randomNumber2]",
+      "#2. Disable and enable the selected network adapter",
+      "    if ($stop -eq $false) {",
+      "      Disable-NetAdapter -Name $netAdapter1.Name -CimSession $selectedNodeName -Confirm:$false",
+      "      Start-Sleep -Seconds 10",
+      "      Enable-NetAdapter -Name $netAdapter1.Name -CimSession $selectedNodeName",
+      "      Start-Sleep -Seconds 10",
+      "      Disable-NetAdapter -Name $netAdapter2.Name -CimSession $selectedNodeName -Confirm:$false",
+      "      Start-Sleep -Seconds 10",
+      "      Enable-NetAdapter -Name $netAdapter2.Name -CimSession $selectedNodeName",
+      "      }",
+      "#3. Enter $selectedNodeName, $netAdapter1.Name, and $netAdapter2.Name into Resource Name field",
+      "    $selectedNodeName; $netAdapter1.Name; $netAdapter2.Name",
+      ""
+    ]
+  },
+
+  {
+    "classname": "NetworkAdapterDisableOneNodeTwoNicPortsLong",
+    "resourcetype": "NetworkAdapter",
+    "faultinstructions": [
+      "#1. Select a network adapter from a cluster node",
+      "    $stop = $false",
+      "    $clusterName = 'S-Cluster' # enter your cluster name",
+      "    $clusterNodes = Get-ClusterNode -Cluster $clusterName",
+      "    $selectedNodeName = ($clusternodes[$(Get-Random -Maximum $clusternodes.Count)]).Name",
+      "    $netAdapters = Get-NetAdapter -Physical -CimSession $selectedNodeName | ? {$_.Status -eq 'Up'}",
+      "    if ($netAdapters.Count -lt 2) { $stop = $true; throw \"Connected network adapters is less than two\" }",
+      "    $randomNumber1 = Get-Random -Maximum $netAdapters.Count",
+      "    $randomNumber2 = Get-Random -Maximum $netAdapters.Count",
+      "    if ($randomNumber2 -eq $randomNumber1) { $randomNumber2 = (($randomNumber2 + 1) % $netAdapters.Count) };",
+      "    $netAdapter1 = $netAdapters[$randomNumber1]",
+      "    $netAdapter2 = $netAdapters[$randomNumber2]",
+      "#2. Disable and enable the selected network adapter",
+      "    if ($stop -eq $false) {",
+      "      Disable-NetAdapter -Name $netAdapter1.Name -CimSession $selectedNodeName -Confirm:$false",
+      "      Start-Sleep -Seconds 180",
+      "      Enable-NetAdapter -Name $netAdapter1.Name -CimSession $selectedNodeName",
+      "      Start-Sleep -Seconds 180",
+      "      Disable-NetAdapter -Name $netAdapter2.Name -CimSession $selectedNodeName -Confirm:$false",
+      "      Start-Sleep -Seconds 180",
+      "      Enable-NetAdapter -Name $netAdapter2.Name -CimSession $selectedNodeName",
+      "      }",
+      "#3. Enter $selectedNodeName, $netAdapter1.Name, and $netAdapter2.Name into Resource Name field",
+      "    $selectedNodeName; $netAdapter1.Name; $netAdapter2.Name",
+      ""
+    ]
+  }
+]
