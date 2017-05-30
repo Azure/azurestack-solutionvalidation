@@ -1,0 +1,112 @@
+﻿[
+  {
+    "classname": "SingleNode1NVMe1SSD1HDDQuickDeath",
+    "resourcetype": "DiskMix",
+    "faultinstructions": [
+      "1.	Inject the fault on one HDD, one SSD and one NVMe disk using coretestshimutil.exe",
+      "a.	This will simulate: Quick Death -  Dead disk fails IOs",
+      "b.	Run the following on all 3 disks selected.",
+      "c.	Coretestutil.exe /addtestcase IoFailureTest /TestUniqueId <Id> /iterations 100000",
+      "d.	Coretestutil.exe /enabletestcase IoFailureTest /TestUniqueId <Id> /iterations 100000",
+      "2.	Verify the 3 disks are being reported as ‘unhealthy’ and VD reported as ‘degraded’",
+      "3.	Verify workloads running without errors. Confirm no VMs got rebooted/turned off",
+      "4.	Check the admin portal  and confirm that the 3 disks failure is reported as alert/warning ",
+      "5.	Confirm the Vdisks is in 'degraded' state.",
+      "6.	Light up the failed disks to identify which disks to remove and replace - Enable-PhysicalDiskIndication - UniqueID <Disk unique ID>",
+      "7.	Remove the 3 faulty disks (disks we injected faults onto) , physically.",
+      "8. Add 3 clean new disks in the same slots as the faulty disks.",
+      "9. Clear coretestshim failures by running the command for each disk- Coretestutil.exe /removetestcase IoFailureTest /TestUniqueId <Id>",
+      "10. Repair-spaces - get-virtualdisk | repair-virtualdisk ",
+      "11. Confirm storage jobs are running - Get-StorageJob",
+      "12. Verify admin portal is up and reports the updated storage status"
+    ]
+  },
+  {
+    "classname": "SingleNode1NVMe1SSD1HDDSlowDeath",
+    "resourcetype": "DiskMix",
+    "faultinstructions": [
+      "1.	Inject the fault on one HDD, one SSD and one NVMe disk using coretestshimutil.exe",
+      "a.	This will simulate: Slow Death - Dying disk bad sector, sector v2",
+      "b.	Run the following on all 3 disks selected.",
+      "c.	Coretestutil.exe /addtestcase IoTimeoutTest /TestUniqueId <Id> /iterations 100000 /startsector 2 /sectorcount 1",
+      "d.	Coretestutil.exe /enabletestcase IoTimeoutTest /TestUniqueId <Id> /iterations 100000 /startsector 2 /sectorcount 1",
+      "2.	Verify the 3 disks are being reported as ‘unhealthy’ and VD reported as ‘degraded’",
+      "3.	Verify workloads running without errors. Confirm no VMs got rebooted/turned off",
+      "4.	Check the admin portal  and confirm that the 3 disks failure is reported as alert/warning ",
+      "5.	Confirm the Vdisks is in 'degraded' state.",
+      "6.	Light up the failed disks to identify which disks to remove and replace - Enable-PhysicalDiskIndication - UniqueID <Disk unique ID>",
+      "7.	Remove the 3 faulty disks (disks we injected faults onto) , physically.",
+      "8. Add 3 clean new disks in the same slots as the faulty disks.",
+      "9. Clear coretestshim failures by running the command for each disk- Coretestutil.exe /removetestcase IoTimeoutTest /TestUniqueId <Id>",
+      "10. Repair-spaces - get-virtualdisk | repair-virtualdisk ",
+      "11. Confirm storage jobs are running - Get-StorageJob",
+      "12. Verify admin portal is up and reports the updated storage status"
+    ]
+  },
+    {
+    "classname": "MF2Node1SSD1HDDQuickDeath",
+    "resourcetype": "DiskMix",
+    "faultinstructions": [
+      "1.	Inject the fault on 2 nodes - one HDD, one SSD per node using coretestshimutil.exe",
+      "a.	This will simulate: Quick Death (Dead disk times out everything)",
+      "b.	Run the following on all 4 disks selected.",
+      "c.	Coretestutil.exe /addtestcase AllTimeoutTest /TestUniqueId <Id> /iterations 100000 ",
+      "d.	Coretestutil.exe /enabletestcase AllTimeoutTest /TestUniqueId <Id> /iterations 100000 ",
+      "2.	Verify the 4 disks are being reported as ‘unhealthy’ and VD reported as ‘degraded’",
+      "3.	Verify workloads running without errors. Confirm no VMs got rebooted/turned off",
+      "4.	Check the admin portal  and confirm that the 4 disks failure is reported as alert/warning ",
+      "5.	Confirm the Vdisks is in 'degraded' state.",
+      "6.	Light up the failed disks to identify which disks to remove and replace - Enable-PhysicalDiskIndication - UniqueID <Disk unique ID>",
+      "7.	Remove the 4 faulty disks (disks we injected faults onto) , physically.",
+      "8. Add 3 clean new disks in the same slots as the faulty disks.",
+      "9. Clear coretestshim failures by running the command for each disk- Coretestutil.exe /removetestcase AllTimeoutTest /TestUniqueId <Id>",
+      "10. Repair-spaces - get-virtualdisk | repair-virtualdisk ",
+      "11. Confirm storage jobs are running - Get-StorageJob",
+      "12. Verify admin portal is up and reports the updated storage status"
+    ]
+  },
+  {
+    "classname": "MF2Node1SSD1HDDSlowDeath",
+    "resourcetype": "DiskMix",
+    "faultinstructions": [
+      "1.	Inject the fault on 2 nodes - one HDD, one SSD per node using coretestshimutil.exe",
+      "a.	This will simulate:  Slow Death ( Dying disk delay IO – 2000ms)",
+      "b.	Run the following on all 4 disks selected.",
+      "c.	Coretestutil.exe /addtestcase IoDelayTest /TestUniqueId <Id> /delay 2000 /iterations 100000",
+      "d.	Coretestutil.exe /enabletestcase IoDelayTest /TestUniqueId <Id> /delay 2000 /iterations 100000",
+      "2.	Verify the 4 disks are being reported as ‘unhealthy’ and VD reported as ‘degraded’",
+      "3.	Verify workloads running without errors. Confirm no VMs got rebooted/turned off",
+      "4.	Check the admin portal  and confirm that the 4 disks failure is reported as alert/warning ",
+      "5.	Confirm the Vdisks is in 'degraded' state.",
+      "6.	Light up the failed disks to identify which disks to remove and replace - Enable-PhysicalDiskIndication - UniqueID <Disk unique ID>",
+      "7.	Remove the 4 faulty disks (disks we injected faults onto) , physically.",
+      "8. Add 4 clean new disks in the same slots as the faulty disks.",
+      "9. Clear coretestshim failures by running the command for each disk- Coretestutil.exe /removetestcase IoDelayTest /TestUniqueId <Id>",
+      "10. Repair-spaces - get-virtualdisk | repair-virtualdisk ",
+      "11. Confirm storage jobs are running - Get-StorageJob",
+      "12. Verify admin portal is up and reports the updated storage status"
+    ]
+  },
+  {
+    "classname": "MF2Node2SSD2HDDQuickDeath",
+    "resourcetype": "DiskMix",
+    "faultinstructions": [
+      "1.	Inject the fault on 2 nodes - 2 HDD, 2 SSD per node using coretestshimutil.exe",
+      "a.	This will simulate: Quick Death ( Dead disk completely goes away)",
+      "b.	Run the following on all 4 disks selected.",
+      "c.	Coretestutil.exe /addtestcase PullDriveTest /TestUniqueId <Id> /iterations 1000 ",
+      "d.	Coretestutil.exe /enabletestcase PullDriveTest /TestUniqueId <Id> /iterations 1000 ",
+      "2.	Verify the 4 disks are being reported as ‘unhealthy’ and VD reported as ‘degraded’",
+      "3.	Verify workloads running without errors. Confirm no VMs got rebooted/turned off",
+      "4.	Check the admin portal  and confirm that the 4 disks failure is reported as alert/warning ",
+      "5.	Confirm the Vdisks is in 'degraded' state.",
+      "6.	Light up the failed disks to identify which disks to remove and replace - Enable-PhysicalDiskIndication - UniqueID <Disk unique ID>",
+      "7.	Remove the 4 faulty disks (disks we injected faults onto) , physically.",
+      "8. Add 4 clean new disks in the same slots as the faulty disks.",
+      "9. Clear coretestshim failures by running the command for each disk- Coretestutil.exe /removetestcase PullDriveTest /TestUniqueId <Id>",
+      "10. Repair-spaces - get-virtualdisk | repair-virtualdisk ",
+      "11. Confirm storage jobs are running - Get-StorageJob",
+      "12. Verify admin portal is up and reports the updated storage status"
+    ]
+  }
+]
